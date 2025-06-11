@@ -1,10 +1,18 @@
 import psycopg2
 from faker import Faker
 
-conn = psycopg2.connect(
-    dbname="hospital_db",
-    user="postgres",
-    password="postgres",
-    port="5342"
-)
-
+def connect_to_db():
+   print("Connecting to PostgreSQL database...")
+   try:
+     conn = psycopg2.connect(
+        host="postgres",
+        dbname="hospital_db",
+        user="postgres",
+        password="postgres",
+        port="5342",
+        
+     )
+     return conn
+   except:
+     print("Error connecting to database")
+     return None
