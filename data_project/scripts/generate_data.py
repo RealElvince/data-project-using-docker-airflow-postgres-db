@@ -14,5 +14,5 @@ def connect_to_db():
      )
      return conn
    except:
-     print("Error connecting to database")
+     print("Error connecting to PostgreSQL database")
      return None
