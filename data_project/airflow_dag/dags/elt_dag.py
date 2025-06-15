@@ -4,10 +4,10 @@ from datetime import datetime, timedelta
 import sys
 
 
-sys.path.append('/opt/airflow/data_project/scripts')
+sys.path.append('/opt/airflow')
 
 
-from scripts.generate_data import generate_patient_data, generate_doctor_data,connect_to_db
+from scripts.generate_data import generate_patient_data, generate_doctor_data
 
 
 default_args = {
@@ -27,10 +27,7 @@ with DAG(
     default_args=default_args,
 ) as dag:
     
-    connect_to_db_task = PythonOperator(
-        task_id="connect_to_db",
-        python_callable=connect_to_db,
-    )
+
     generate_patient_data_task = PythonOperator(
         task_id="generate_patient_data",
         python_callable=generate_patient_data,
@@ -44,4 +41,5 @@ with DAG(
     
     )
 
-    connect_to_db_task >> generate_patient_data_task >> generate_doctor_data_task
+
+generate_patient_data_task >> generate_doctor_data_task
