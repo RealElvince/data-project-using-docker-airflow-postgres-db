@@ -21,6 +21,4 @@ This project simulates the generation and insertion of synthetic hospital data i
 - psycopg2 (PostgreSQL connector for Python)
 
 
-#
-
 
