@@ -19,9 +19,9 @@ default_args = {
 }
 
 with DAG(
-    dag_id="weather_api_orchestrator",
-    description="Orchestrator for Weather API DAGs",
-    tags=["weather_api", "orchestrator"],
+    dag_id="hospital_data_generation",
+    description="Orchestrator for Hospital Data Generation",
+    tags=["hospital", "data_generation"],
     schedule=timedelta(minutes=5),
     catchup=False,
     default_args=default_args,
