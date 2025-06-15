@@ -7,7 +7,7 @@ import sys
 sys.path.append('/opt/airflow/data_project/scripts')
 
 
-from generate_data import generate_patient_data, generate_doctor_data
+from scripts.generate_data import generate_patient_data, generate_doctor_data
 
 
 default_args = {
@@ -31,12 +31,14 @@ with DAG(
         task_id="generate_patient_data",
         python_callable=generate_patient_data,
         op_kwargs={"num_records": 400},
+        dag=dag,
     )
 
     generate_doctor_data_task = PythonOperator(
         task_id="generate_doctor_data",
         python_callable=generate_doctor_data,
         op_kwargs={"num_records": 100},
+        dag=dag,
     )
 
     generate_patient_data_task >> generate_doctor_data_task
